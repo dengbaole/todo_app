@@ -8,7 +8,7 @@
 <body>
     <div class="todo-app">
         <div class="title">
-            Todo List
+            Todo List 😂
         </div>
         <div class="todo-form">
             <input type="text" id="todo-input" placeholder="Add a todo">
@@ -20,18 +20,19 @@
     </div>
     <style>
         body {
-            background: linear-gradient(to right, rgb(163, 63, 163), rgb(190, 138, 42));
+            background: linear-gradient(to right, rgb(63, 65, 163), rgb(19, 126, 203));
         }
+
         .todo-app {
-            width: 98%;
+            width: 90%; /* 或者设置为一个固定宽度，例如 600px */
             height: auto; /* height: auto; */
             background: white;
-            margin: auto;
-            margin-top: 20px;
+            margin: 20px auto; /* 上下间距 20px，左右自动居中 */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             padding: 20px;
         }
+
         .title {
             font-size: 30px;
             text-align: center;
@@ -89,42 +90,52 @@
     </style>
     <script>
         document.getElementById('add-todo').addEventListener('click', function() {
-            const input = document.getElementById('todo-input');
-            const todoText = input.value.trim();
-            if (todoText === '') {
-                alert('Please enter a todo item.');
-                return;
-            }
+    const input = document.getElementById('todo-input');
+    const todoText = input.value.trim();
+    if (todoText === '') {
+        alert('Please enter a todo item.');
+        return;
+    }
 
-            // Create todo item
-            const todoList = document.getElementById('todo-list');
-            const todoItem = document.createElement('div');
-            todoItem.className = 'todo-item';
+    // Create todo item
+    const todoList = document.getElementById('todo-list');
+    const todoItem = document.createElement('div');
+    todoItem.className = 'todo-item';
 
-            todoItem.innerHTML = `
-                <input type="checkbox" class="todo-checkbox">
-                <span>${todoText}</span>
-                <button class="delete-btn">Delete</button>
-            `;
+    todoItem.innerHTML = `
+        <input type="checkbox" class="todo-checkbox">
+        <span class="todo-text">${todoText}</span>
+        <button class="delete-btn">Delete</button>
+    `;
 
-            // Append todo item to the list
-            todoList.appendChild(todoItem);
+    // Append todo item to the list
+    todoList.appendChild(todoItem);
 
-            // Clear input
-            input.value = '';
+    // Clear input
+    input.value = '';
 
-            // Add delete functionality
-            todoItem.querySelector('.delete-btn').addEventListener('click', function() {
-                todoList.removeChild(todoItem);
-            });
-        });
+    // Add delete functionality
+    todoItem.querySelector('.delete-btn').addEventListener('click', function() {
+        todoList.removeChild(todoItem);
+    });
 
-        // Optional: Allow pressing Enter to add todo
-        document.getElementById('todo-input').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                document.getElementById('add-todo').click();
-            }
-        });
+    // Add checkbox functionality
+    todoItem.querySelector('.todo-checkbox').addEventListener('change', function() {
+        const todoTextElement = todoItem.querySelector('.todo-text');
+        if (this.checked) {
+            todoTextElement.style.textDecoration = 'line-through'; // Add line-through
+        } else {
+            todoTextElement.style.textDecoration = 'none'; // Remove line-through
+        }
+    });
+});
+
+// Optional: Allow pressing Enter to add todo
+document.getElementById('todo-input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById('add-todo').click();
+    }
+});
     </script>
 </body>
 </html>
