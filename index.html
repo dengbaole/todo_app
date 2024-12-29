@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
 </head>
-
 <body>
     <div class="todo-app">
         <div class="title">
-            Todo List
+            Todo List 😂
         </div>
         <div class="todo-form">
             <input type="text" id="todo-input" placeholder="Add a todo">
@@ -22,20 +20,14 @@
     </div>
     <style>
         body {
-            background:
-                linear-gradient(to right, rgb(63, 65, 163), rgb(19, 126, 203));
+            background: linear-gradient(to right, rgb(63, 78, 163), rgb(19, 126, 203));
         }
 
         .todo-app {
-            width: 90%;
-            /* 或者设置为一个固定宽度，例如 600px */
-            height:
-                auto;
-            /* height: auto; */
-            background:
-                white;
-            margin: 20px auto;
-            /* 上下间距 20px，左右自动居中 */
+            width: 90%; /* 或者设置为一个固定宽度，例如 600px */
+            height: auto; /* height: auto; */
+            background: white;
+            margin: 20px auto; /* 上下间距 20px，左右自动居中 */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             padding: 20px;
@@ -43,142 +35,107 @@
 
         .title {
             font-size: 30px;
-            text-align:
-                center;
+            text-align: center;
             padding: 2px;
-            box-sizing:
-                border-box;
+            box-sizing: border-box;
             margin-top: 10px;
             font-weight: 700;
         }
-
         .todo-form {
-            display:
-                flex;
-            justify-content:
-                center;
-            align-items:
-                center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-top: 20px;
         }
-
         .todo-form input {
             width: 60%;
-            height: 40px;
-            /* 设置输入框高度 */
+            height: 40px; /* 设置输入框高度 */
             border: 1px solid rgb(163, 63, 163);
             border-radius: 5px 0 0 5px;
             padding: 5px;
-            outline:
-                none;
-            box-sizing:
-                border-box;
-            /* 确保内边距不会影响总高度 */
+            outline: none;
+            box-sizing: border-box; /* 确保内边距不会影响总高度 */
         }
-
         .todo-button {
-            width: 100px;
-            /* Adjusted width for better UI */
-            height: 40px;
-            /* 设置按钮高度与输入框一致 */
+            width: 100px; /* Adjusted width for better UI */
+            height: 40px; /* 设置按钮高度与输入框一致 */
             border-radius: 0 5px 5px 0;
-            background:
-                rgb(163, 63, 163);
-            color:
-                white;
-            display:
-                flex;
-            justify-content:
-                center;
-            align-items:
-                center;
-            cursor:
-                pointer;
+            background: rgb(163, 63, 163);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
         }
-
         .todo-list {
             margin-top: 20px;
         }
-
         .todo-item {
-            display:
-                flex;
-            align-items:
-                center;
-            /* 垂直居中对齐 */
+            display: flex;
+            align-items: center; /* 垂直居中对齐 */
             padding: 10px;
             border-bottom: 1px solid rgb(163, 63, 163);
         }
-
         .todo-item input[type="checkbox"] {
-            margin-right: 10px;
-            /* 复选框和文本之间的间距 */
+            margin-right: 10px; /* 复选框和文本之间的间距 */
         }
-
         .todo-item button {
-            background:
-                rgb(163, 63, 163);
-            color:
-                white;
-            border:
-                none;
+            background: rgb(163, 63, 163);
+            color: white;
+            border: none;
             border-radius: 5px;
-            cursor:
-                pointer;
-            margin-left:
-                auto;
-            /* 将删除按钮推到右侧 */
+            cursor: pointer;
+            margin-left: auto; /* 将删除按钮推到右侧 */
         }
     </style>
     <script>
-        document.getElementById('add-todo').addEventListener('click', function () {
-            const input = document.getElementById('todo-input');
-            const todoText = input.value.trim();
-            if (todoText === '') {
-                alert('Please enter a todo item.');
-                return;
-            }
+        document.getElementById('add-todo').addEventListener('click', function() {
+    const input = document.getElementById('todo-input');
+    const todoText = input.value.trim();
+    if (todoText === '') {
+        alert('Please enter a todo item.');
+        return;
+    }
 
-            // Create todo item
-            const todoList = document.getElementById('todo-list');
-            const todoItem = document.createElement('div');
-            todoItem.className = 'todo-item';
+    // Create todo item
+    const todoList = document.getElementById('todo-list');
+    const todoItem = document.createElement('div');
+    todoItem.className = 'todo-item';
 
-            todoItem.innerHTML = `
-                         <input type="checkbox" class="todo-checkbox">
-                                         <span class="todo-text">$ {todoText}</span>
-    <button class="delete-btn">Delete</button>
-                      `;
+    todoItem.innerHTML = `
+        <input type="checkbox" class="todo-checkbox">
+        <span class="todo-text">${todoText}</span>
+        <button class="delete-btn">Delete</button>
+    `;
 
-            // Append todo item to the list
-            todoList.appendChild(todoItem);
+    // Append todo item to the list
+    todoList.appendChild(todoItem);
 
-            // Clear input
-            input.value = '';
+    // Clear input
+    input.value = '';
 
-            // Add delete functionality
-            todoItem.querySelector('.delete-btn').addEventListener('click', function () {
-                todoList.removeChild(todoItem);
-            });
+    // Add delete functionality
+    todoItem.querySelector('.delete-btn').addEventListener('click', function() {
+        todoList.removeChild(todoItem);
+    });
 
-            // Add checkbox functionality
-            todoItem.querySelector('.todo-checkbox').addEventListener('change', function () {
-                const todoTextElement = todoItem.querySelector('.todo-text');
-                if (this.checked) {
-                    todoTextElement.style.textDecoration = 'line-through'; // Add line-through
-                } else {
-                    todoTextElement.style.textDecoration = 'none'; // Remove line-through
-                }
-            });
-        });
+    // Add checkbox functionality
+    todoItem.querySelector('.todo-checkbox').addEventListener('change', function() {
+        const todoTextElement = todoItem.querySelector('.todo-text');
+        if (this.checked) {
+            todoTextElement.style.textDecoration = 'line-through'; // Add line-through
+        } else {
+            todoTextElement.style.textDecoration = 'none'; // Remove line-through
+        }
+    });
+});
 
-        // Optional: Allow pressing Enter to add todo
-        document.getElementById('todo-input').addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-                document.getElementById('add-todo').click();
-            }
-        });
+// Optional: Allow pressing Enter to add todo
+document.getElementById('todo-input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById('add-todo').click();
+    }
+});
     </script>
 </body>
-
 </html>
